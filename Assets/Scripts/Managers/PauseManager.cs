@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))  // Example key to pause/unpause
+        if (Input.GetKeyDown(KeyCode.P))  // Example key to pause/unpause
         {
             if (isPaused)
             {

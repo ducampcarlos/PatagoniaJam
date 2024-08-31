@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class FunctionalityManager : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class FunctionalityManager : MonoBehaviour
     public MouseMovement mouseMovement;
     public GameObject reticle;
     public ObjectInspection objectInspection;
+    public Volume volume;
+
+    private DepthOfField depthOfField;
 
     private void Awake()
     {
@@ -22,6 +27,15 @@ public class FunctionalityManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Get the Depth Of Field setting from the Volume
+        if (volume.profile.TryGet<DepthOfField>(out depthOfField))
+        {
+            // DepthOfField component successfully retrieved
+        }
+    }
+
     public void StartInspection()
     {
         if (playerMovement != null)
@@ -32,6 +46,8 @@ public class FunctionalityManager : MonoBehaviour
 
         if (reticle != null)
             reticle.SetActive(false);
+
+        ActivateDepthOfField(true);
     }
 
     public void StopInspection()
@@ -44,6 +60,8 @@ public class FunctionalityManager : MonoBehaviour
 
         if (reticle != null)
             reticle.SetActive(true);
+
+        ActivateDepthOfField(false);
     }
 
     public void PauseGame()
@@ -53,10 +71,21 @@ public class FunctionalityManager : MonoBehaviour
 
         if (objectInspection != null)
             objectInspection.StopInspectionExternally();
+
+        ActivateDepthOfField(true);
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
+        ActivateDepthOfField(false);
+    }
+
+    private void ActivateDepthOfField(bool activate)
+    {
+        if (depthOfField != null)
+        {
+            depthOfField.active = activate;
+        }
     }
 }

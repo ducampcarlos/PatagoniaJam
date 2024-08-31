@@ -191,14 +191,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2589175059025230071}
-  speed: 12
-  gravity: -19.62
+  speed: 5
+  gravity: -39.24
   jumpHeight: 3
   groundCheck: {fileID: 1197457978024355639}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
 --- !u!114 &7419695212843890964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1c8bab909846c499adf310a32fdc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  cam: {fileID: 0}
+  mouseSensitivity: 300
+  cam: {fileID: 6525093250463062351}
 --- !u!114 &1701830565408138168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,12 +226,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 6525093250463062351}
-  rotationSpeed: 100
+  rotationSpeed: 300
   inspectableLayer:
     serializedVersion: 2
     m_Bits: 1
   inspectDistance: 1.5
   inspectLayerName: InspectableObject
+  noteUI: {fileID: 0}
+  noteTextDisplay: {fileID: 0}
 --- !u!1001 &1309626421960064465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,6 +242,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 459615271402466650}
     m_Modifications:
+    - target: {fileID: 1728511839882076660, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
+      propertyPath: field of view
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728511839882076660, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3126110528000162867, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -314,8 +324,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 6525093250463062351}
     m_Modifications:
     - target: {fileID: 1728511839882076660, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
+      propertyPath: field of view
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728511839882076660, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728511839882076660, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 64
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 3126110528000162867, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
       propertyPath: m_Name
