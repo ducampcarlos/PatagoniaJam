@@ -150,7 +150,6 @@ Transform:
   - {fileID: 2878877288010776336}
   - {fileID: 1197457978024355639}
   - {fileID: 6525093250463062351}
-  - {fileID: 7697270232286495426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2589175059025230071
@@ -213,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
+  cam: {fileID: 0}
 --- !u!114 &1701830565408138168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +294,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5233591749582218398, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7697270232286495426}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
 --- !u!4 &6525093250463062351 stripped
@@ -308,7 +311,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 459615271402466650}
+    m_TransformParent: {fileID: 6525093250463062351}
     m_Modifications:
     - target: {fileID: 1728511839882076660, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -336,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5233591749582218398, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.329
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5233591749582218398, guid: 0336a5907bd168344a9721b65007b86e, type: 3}
       propertyPath: m_LocalPosition.z

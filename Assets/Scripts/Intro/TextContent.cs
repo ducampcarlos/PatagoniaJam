@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TextContent", menuName = "ScriptableObjects/TextContent", order = 1)]
+[CreateAssetMenu(fileName = "TextContent", menuName = "IntroText/TextContent", order = 1)]
 public class TextContent : ScriptableObject
 {
     [TextAreaAttribute]

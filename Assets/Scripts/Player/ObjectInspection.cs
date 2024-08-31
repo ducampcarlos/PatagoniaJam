@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;  // For TextMeshPro
 
 public class ObjectInspection : MonoBehaviour
 {
@@ -8,18 +9,24 @@ public class ObjectInspection : MonoBehaviour
     public float inspectDistance = 1.5f;  // Distance in front of the camera for inspection
     public string inspectLayerName = "InspectableObject";  // Layer name for inspected objects
 
+    public GameObject noteUI;  // Reference to the GameObject containing the background and text
+    public TextMeshProUGUI noteTextDisplay;  // Reference to the UI text element for displaying note contents
+
     private bool isInspecting = false;
     private GameObject currentInspectableObject;
     private Vector3 originalObjectPosition;
     private Quaternion originalObjectRotation;
     private int originalLayer;
-    private PlayerMovement playerMovement;
-    private MouseMovement mouseMovement;
+
+    private bool isNote = false;
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        mouseMovement = GetComponent<MouseMovement>();
+        // Initially hide the note UI
+        if (noteUI != null)
+        {
+            noteUI.SetActive(false);
+        }
     }
 
     void Update()
@@ -36,9 +43,14 @@ public class ObjectInspection : MonoBehaviour
             }
         }
 
-        if (isInspecting && currentInspectableObject != null)
+        if (isInspecting && currentInspectableObject != null && !isNote)
         {
             RotateInspectableObject();
+        }
+
+        if (isInspecting && Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopInspection();
         }
     }
 
@@ -49,33 +61,61 @@ public class ObjectInspection : MonoBehaviour
         {
             if (hit.collider.CompareTag("Inspectable"))
             {
-                currentInspectableObject = hit.collider.gameObject;
-                originalObjectPosition = currentInspectableObject.transform.position;
-                originalObjectRotation = currentInspectableObject.transform.rotation;
-                originalLayer = currentInspectableObject.layer;
-
-                // Set the object to a layer that renders above others (adjust your layer setup accordingly)
-                currentInspectableObject.layer = LayerMask.NameToLayer(inspectLayerName);
-
-                // Disable player movement
-                playerMovement.enabled = false;
-                mouseMovement.enabled = false;
-
-                // Bring the object in front of the camera
-                currentInspectableObject.transform.SetParent(playerCamera);
-                currentInspectableObject.transform.localPosition = new Vector3(0, 0, inspectDistance);
-                currentInspectableObject.transform.localRotation = Quaternion.identity;
-
-                isInspecting = true;
-            }
-            else if (hit.collider.CompareTag("Door"))
-            {
-                //Open door
+                HandleInspectableObject(hit.collider.gameObject);
             }
             else if (hit.collider.CompareTag("Note"))
             {
-                //See Note
+                HandleNoteObject(hit.collider.gameObject);
             }
+        }
+    }
+
+    void HandleInspectableObject(GameObject inspectableObject)
+    {
+        currentInspectableObject = inspectableObject;
+        originalObjectPosition = currentInspectableObject.transform.position;
+        originalObjectRotation = currentInspectableObject.transform.rotation;
+        originalLayer = currentInspectableObject.layer;
+
+        // Set the object to a layer that renders above others
+        currentInspectableObject.layer = LayerMask.NameToLayer(inspectLayerName);
+
+        // Disable other functionalities via the FunctionalityManager
+        FunctionalityManager.Instance.StartInspection();
+
+        // Bring the object in front of the camera
+        currentInspectableObject.transform.SetParent(playerCamera);
+        currentInspectableObject.transform.localPosition = new Vector3(0, 0, inspectDistance);
+        currentInspectableObject.transform.localRotation = Quaternion.identity;
+
+        isInspecting = true;
+        isNote = false;  // This is not a note, so allow rotation
+    }
+
+    void HandleNoteObject(GameObject noteObject)
+    {
+        currentInspectableObject = noteObject;
+
+        // Disable other functionalities via the FunctionalityManager
+        FunctionalityManager.Instance.StartInspection();
+
+        // Display the note's text on the screen
+        Note noteComponent = noteObject.GetComponent<Note>();
+        if (noteComponent != null && noteTextDisplay != null)
+        {
+            noteTextDisplay.text = noteComponent.textContent;  // Assuming Note has a textContent string field
+            noteUI.SetActive(true);  // Activate the UI GameObject
+        }
+
+        isInspecting = true;
+        isNote = true;  // This is a note, so don't allow rotation
+    }
+
+    public void StopInspectionExternally()
+    {
+        if (isInspecting)
+        {
+            StopInspection();
         }
     }
 
@@ -83,18 +123,27 @@ public class ObjectInspection : MonoBehaviour
     {
         if (currentInspectableObject != null)
         {
-            // Reset the object's position, rotation, and layer
-            currentInspectableObject.transform.SetParent(null);
-            currentInspectableObject.transform.position = originalObjectPosition;
-            currentInspectableObject.transform.rotation = originalObjectRotation;
-            currentInspectableObject.layer = originalLayer;
+            // Reset the object's position, rotation, and layer if it's not a note
+            if (!isNote)
+            {
+                currentInspectableObject.transform.SetParent(null);
+                currentInspectableObject.transform.position = originalObjectPosition;
+                currentInspectableObject.transform.rotation = originalObjectRotation;
+                currentInspectableObject.layer = originalLayer;
+            }
 
-            // Enable player movement
-            playerMovement.enabled = true;
-            mouseMovement.enabled = true;
+            // Disable the note UI
+            if (isNote && noteUI != null)
+            {
+                noteUI.SetActive(false);
+            }
+
+            // Enable other functionalities via the FunctionalityManager
+            FunctionalityManager.Instance.StopInspection();
 
             currentInspectableObject = null;
             isInspecting = false;
+            isNote = false;  // Reset the note flag
         }
     }
 

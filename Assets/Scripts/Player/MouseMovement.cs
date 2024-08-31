@@ -10,6 +10,8 @@ public class MouseMovement : MonoBehaviour
     float xRotation = 0f;
     float YRotation = 0f;
 
+    [SerializeField] Transform cam;
+
     void Start()
     {
         //Locking the cursor to the middle of the screen and making it invisible
@@ -33,7 +35,8 @@ public class MouseMovement : MonoBehaviour
             YRotation += mouseX;
 
             //applying both rotations
-            transform.localRotation = Quaternion.Euler(xRotation, YRotation, 0f);
+            transform.localRotation = Quaternion.Euler(0, YRotation, 0f);
+            cam.localRotation = Quaternion.Euler(xRotation, 0, 0f);
         //}
     }
 }
