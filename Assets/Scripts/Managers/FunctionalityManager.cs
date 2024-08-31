@@ -32,7 +32,7 @@ public class FunctionalityManager : MonoBehaviour
         // Get the Depth Of Field setting from the Volume
         if (volume.profile.TryGet<DepthOfField>(out depthOfField))
         {
-            // DepthOfField component successfully retrieved
+            Debug.Log("Depth of field get");
         }
     }
 
