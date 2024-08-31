@@ -72,6 +72,10 @@ public class ObjectInspection : MonoBehaviour
             {
                 hit.collider.GetComponent<Animator>().SetTrigger("Open");
             }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
+                hit.collider.GetComponent<Animator>().SetTrigger("Move");
+            }
         }
     }
 
