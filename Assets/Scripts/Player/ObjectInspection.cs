@@ -59,6 +59,7 @@ public class ObjectInspection : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 5f, inspectableLayer))
         {
+            Debug.Log(hit.collider.tag);
             if (hit.collider.CompareTag("Inspectable"))
             {
                 HandleInspectableObject(hit.collider.gameObject);
@@ -66,6 +67,10 @@ public class ObjectInspection : MonoBehaviour
             else if (hit.collider.CompareTag("Note"))
             {
                 HandleNoteObject(hit.collider.gameObject);
+            }
+            else if (hit.collider.CompareTag("Door"))
+            {
+                hit.collider.GetComponent<Animator>().SetTrigger("Open");
             }
         }
     }

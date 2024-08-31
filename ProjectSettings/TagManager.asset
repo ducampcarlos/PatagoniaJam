@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Inspectable
   - Note
+  - Door
   layers:
   - Default
   - TransparentFX
