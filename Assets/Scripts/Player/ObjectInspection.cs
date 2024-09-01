@@ -69,7 +69,7 @@ public class ObjectInspection : MonoBehaviour
     void UpdateReticleColor()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 5f, inspectableLayer))
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 2f, inspectableLayer))
         {
             if (hit.collider.CompareTag("Inspectable") ||
                 hit.collider.CompareTag("Note") ||
@@ -93,7 +93,7 @@ public class ObjectInspection : MonoBehaviour
     void StartInteraction()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 5f, inspectableLayer))
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 2f, inspectableLayer))
         {
             if (hit.collider.CompareTag("Inspectable"))
             {
