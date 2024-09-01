@@ -20176,10 +20176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawerColliders:
-  - {fileID: 633369874}
-  - {fileID: 1346945192}
-  - {fileID: 746125742}
-  - {fileID: 746125739}
+  - {fileID: 746125728}
+  - {fileID: 746125732}
+  - {fileID: 746125731}
+  - {fileID: 746125730}
   H2Door: {fileID: 46879027}
   sleepingGas:
   - {fileID: 77321003}

@@ -8,7 +8,7 @@ public class Day1Events : MonoBehaviour
 {
     public static Day1Events Instance { get; private set; }
 
-    [SerializeField] List<Collider> drawerColliders = new List<Collider>();
+    [SerializeField] List<GameObject> drawerColliders = new List<GameObject>();
 
     [SerializeField] GameObject H2Door;
 
@@ -39,7 +39,7 @@ public class Day1Events : MonoBehaviour
     {
         foreach(var ani in drawerColliders)
         {
-            ani.enabled = true;
+            ani.tag = "Drawer";
         }
     }
 
