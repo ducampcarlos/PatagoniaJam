@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Drawer
   - Activable
+  - Deactivable
   layers:
   - Default
   - TransparentFX
