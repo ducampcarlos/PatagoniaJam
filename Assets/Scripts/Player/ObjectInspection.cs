@@ -76,6 +76,10 @@ public class ObjectInspection : MonoBehaviour
             {
                 hit.collider.GetComponent<Animator>().SetTrigger("Move");
             }
+            else if (hit.collider.CompareTag("Activable"))
+            {
+                hit.collider.GetComponent<IActivable>().Activate();
+            }
         }
     }
 

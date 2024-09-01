@@ -8,6 +8,7 @@ TagManager:
   - Note
   - Door
   - Drawer
+  - Activable
   layers:
   - Default
   - TransparentFX
