@@ -131,14 +131,22 @@ public class ObjectInspection : MonoBehaviour
         // Disable other functionalities via the FunctionalityManager
         FunctionalityManager.Instance.StartInspection();
 
-        // Bring the object in front of the camera
-        currentInspectableObject.transform.SetParent(playerCamera);
-        currentInspectableObject.transform.localPosition = new Vector3(0, 0, inspectDistance);
-        currentInspectableObject.transform.localRotation = Quaternion.identity;
+        // Set the object as a child of the camera but maintain its world position and rotation
+        currentInspectableObject.transform.SetParent(playerCamera, true);
+
+        // Adjust the position to be in front of the camera at the desired distance
+        Vector3 adjustedPosition = playerCamera.position + playerCamera.forward * inspectDistance;
+        currentInspectableObject.transform.position = adjustedPosition;
+
+        // Maintain the object's original world rotation
+        currentInspectableObject.transform.rotation = originalObjectRotation;
 
         isInspecting = true;
         isNote = false;  // This is not a note, so allow rotation
     }
+
+
+
 
     void HandleNoteObject(GameObject noteObject)
     {
