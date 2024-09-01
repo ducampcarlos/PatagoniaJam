@@ -17551,7 +17551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472716d60394fa14faa58a14d31e4282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mannequinDoor: {fileID: 0}
+  mannequinDoor: {fileID: 558324996}
 --- !u!4 &1819555904
 Transform:
   m_ObjectHideFlags: 0

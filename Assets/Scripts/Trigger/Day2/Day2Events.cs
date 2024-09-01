@@ -29,7 +29,7 @@ public class Day2Events : MonoBehaviour
 
     IEnumerator ActivateMannequinCrawl()
     {
-        yield return new WaitForSeconds(2);
-        //Activar Maniqui
+        yield return new WaitForSeconds(1);
+        //Activar Trigger Maniqui corriendo
     }
 }
