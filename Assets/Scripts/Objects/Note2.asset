@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b0e286179e6a94bb917e9ac9b082f3, type: 3}
   m_Name: Note2
   m_EditorClassIdentifier: 
-  bodyText: Content of the second note
+  bodyText: El brujo dijo que NUNCA abramos esa puerta sin importar los gritos ni
+    los golpes.

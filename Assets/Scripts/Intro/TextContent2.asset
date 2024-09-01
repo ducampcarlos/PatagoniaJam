@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf095e2e3d7e0449a8b907df5e57bf9, type: 3}
   m_Name: TextContent2
   m_EditorClassIdentifier: 
-  text1: Estas dentro del complejo
-  text2: Explorar
+  text1: "Luego de 5 a\xF1os de servicio, tus superiores te asignan una tarea ultrasecreta
+    en una base submarina escondida en el fondo del Mar Argentino. Te dicen que deber\xE1s
+    pasar 3 meses viviendo bajo el mar y no podr\xE1s comunicarte con ninguna persona
+    mas que con el personal a bordo de la instalaci\xF3n."
+  text2: "Aceptas la misi\xF3n con orgullo"

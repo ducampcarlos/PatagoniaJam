@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf095e2e3d7e0449a8b907df5e57bf9, type: 3}
-  m_Name: TextContent1
+  m_Name: TextContent3
   m_EditorClassIdentifier: 
-  text1: "Terminaste tu entrenamiento en la Escuela Nacional de Inteligencia de una
-    manera m\xE1s que satisfactoria."
-  text2: Ingresas a la SIDE
+  text1: "Luego de un largo viaje, llegas a una playa desolada donde lo \xFAnico
+    que se ve a la vista es un submarino. Sin dudarlo entras al sumergible y emprendes
+    el viaje hacia lo desconocido."
+  text2: "Llegas a la instalaci\xF3n"
