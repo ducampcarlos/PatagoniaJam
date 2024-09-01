@@ -6,6 +6,7 @@ public class Day2Events : MonoBehaviour
 {
     public static Day2Events Instance;
     public GameObject mannequinDoor;
+    [SerializeField] List<GameObject> mannequinTriggers = new List<GameObject>();
 
     private void Awake()
     {
@@ -22,14 +23,23 @@ public class Day2Events : MonoBehaviour
     public void StartMannequinSounds()
     {
         //Sonidos de Maniqui
-        mannequinDoor.GetComponent<Animator>().SetTrigger("Open");
+        mannequinDoor.GetComponent<Animator>().SetTrigger("QuickOpen");
 
-        
+        StartCoroutine(ActivateMannequinCrawl());
     }
 
     IEnumerator ActivateMannequinCrawl()
     {
         yield return new WaitForSeconds(1);
-        //Activar Trigger Maniqui corriendo
+        foreach(GameObject obj in mannequinTriggers)
+        {
+            obj.SetActive(true);
+        }
+    }
+
+    public void ShutMannequinDoor()
+    {
+        mannequinDoor.GetComponent<Animator>().SetTrigger("Shut");
+        mannequinDoor.tag = "Door";
     }
 }

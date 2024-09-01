@@ -115,6 +115,8 @@ public class Day1Events : MonoBehaviour
 
     void ActivatePlayerControl(bool state)
     {
+        if(!state)
+            player.GetComponent<ObjectInspection>().StopInspectionExternally();
         player.GetComponent<MouseMovement>().enabled = state;
         player.GetComponent<PlayerMovement>().enabled = state;
         player.GetComponent<ObjectInspection>().enabled = state;
