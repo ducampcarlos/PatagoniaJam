@@ -58,6 +58,7 @@ public class Day2Events : MonoBehaviour
     public void ActivateH2Room()
     {
         ShutMannequinDoor(false);
+        mannequinDoor.tag = "Untagged";
         H2Light.SetActive(true);
         H2Mannequin.SetActive(true);
     }
