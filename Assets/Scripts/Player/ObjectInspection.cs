@@ -1,5 +1,6 @@
 using UnityEngine;
-using TMPro;  // For TextMeshPro
+using TMPro;
+using UnityEngine.UI;  // For UI elements
 
 public class ObjectInspection : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class ObjectInspection : MonoBehaviour
 
     public GameObject noteUI;  // Reference to the GameObject containing the background and text
     public TextMeshProUGUI noteTextDisplay;  // Reference to the UI text element for displaying note contents
+    public Image reticleImage;  // Reference to the reticle image
+    public Color defaultReticleColor = Color.white;
+    public Color interactableReticleColor = Color.yellow;
 
     private bool isInspecting = false;
     private GameObject currentInspectableObject;
@@ -27,10 +31,18 @@ public class ObjectInspection : MonoBehaviour
         {
             noteUI.SetActive(false);
         }
+
+        // Set the reticle to its default color
+        if (reticleImage != null)
+        {
+            reticleImage.color = defaultReticleColor;
+        }
     }
 
     void Update()
     {
+        UpdateReticleColor();
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isInspecting)
@@ -54,12 +66,35 @@ public class ObjectInspection : MonoBehaviour
         }
     }
 
+    void UpdateReticleColor()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 2f, inspectableLayer))
+        {
+            if (hit.collider.CompareTag("Inspectable") ||
+                hit.collider.CompareTag("Note") ||
+                hit.collider.CompareTag("Door") ||
+                hit.collider.CompareTag("Drawer") ||
+                hit.collider.CompareTag("Activable"))
+            {
+                reticleImage.color = interactableReticleColor;
+            }
+            else
+            {
+                reticleImage.color = defaultReticleColor;
+            }
+        }
+        else
+        {
+            reticleImage.color = defaultReticleColor;
+        }
+    }
+
     void StartInteraction()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 5f, inspectableLayer))
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 2f, inspectableLayer))
         {
-            Debug.Log(hit.collider.tag);
             if (hit.collider.CompareTag("Inspectable"))
             {
                 HandleInspectableObject(hit.collider.gameObject);
@@ -96,14 +131,22 @@ public class ObjectInspection : MonoBehaviour
         // Disable other functionalities via the FunctionalityManager
         FunctionalityManager.Instance.StartInspection();
 
-        // Bring the object in front of the camera
-        currentInspectableObject.transform.SetParent(playerCamera);
-        currentInspectableObject.transform.localPosition = new Vector3(0, 0, inspectDistance);
-        currentInspectableObject.transform.localRotation = Quaternion.identity;
+        // Set the object as a child of the camera but maintain its world position and rotation
+        currentInspectableObject.transform.SetParent(playerCamera, true);
+
+        // Adjust the position to be in front of the camera at the desired distance
+        Vector3 adjustedPosition = playerCamera.position + playerCamera.forward * inspectDistance;
+        currentInspectableObject.transform.position = adjustedPosition;
+
+        // Maintain the object's original world rotation
+        currentInspectableObject.transform.rotation = originalObjectRotation;
 
         isInspecting = true;
         isNote = false;  // This is not a note, so allow rotation
     }
+
+
+
 
     void HandleNoteObject(GameObject noteObject)
     {
@@ -118,6 +161,13 @@ public class ObjectInspection : MonoBehaviour
         {
             noteTextDisplay.text = noteComponent.textContent;  // Assuming Note has a textContent string field
             noteUI.SetActive(true);  // Activate the UI GameObject
+        }
+
+        // Ensure the note object is behind the UI
+        Renderer noteRenderer = noteObject.GetComponent<Renderer>();
+        if (noteRenderer != null)
+        {
+            noteRenderer.sortingOrder = -1;  // Adjust as needed
         }
 
         isInspecting = true;
