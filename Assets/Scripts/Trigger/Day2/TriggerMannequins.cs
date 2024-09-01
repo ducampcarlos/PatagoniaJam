@@ -35,7 +35,7 @@ public class TriggerMannequins : MonoBehaviour
 
         if (other.gameObject.CompareTag("Deactivable"))
         {
-            Day2Events.Instance.ShutMannequinDoor();
+            Day2Events.Instance.ShutMannequinDoor(true);
             gameObject.SetActive(false);
             other.gameObject.SetActive(false);
 

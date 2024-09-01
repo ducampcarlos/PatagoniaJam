@@ -7,6 +7,15 @@ public class Day2Events : MonoBehaviour
     public static Day2Events Instance;
     public GameObject mannequinDoor;
     [SerializeField] List<GameObject> mannequinTriggers = new List<GameObject>();
+    [SerializeField] GameObject H2Trigger;
+    [SerializeField] GameObject H2Light;
+    [SerializeField] GameObject H2Mannequin;
+
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject pause;
+    [SerializeField] GameObject reticle;
+
+    [SerializeField] CameraTransition camt;
 
     private void Awake()
     {
@@ -37,9 +46,36 @@ public class Day2Events : MonoBehaviour
         }
     }
 
-    public void ShutMannequinDoor()
+    public void ShutMannequinDoor(bool setSecondTrigger)
     {
         mannequinDoor.GetComponent<Animator>().SetTrigger("Shut");
         mannequinDoor.tag = "Door";
+
+        if (setSecondTrigger)
+            H2Trigger.SetActive(true);
+    }
+
+    public void ActivateH2Room()
+    {
+        ShutMannequinDoor(false);
+        H2Light.SetActive(true);
+        H2Mannequin.SetActive(true);
+    }
+
+    public void LastWhispers()
+    {
+        ActivatePlayerControl(false);
+        camt.enabled = true;
+    }
+
+    void ActivatePlayerControl(bool state)
+    {
+        if (!state)
+            player.GetComponent<ObjectInspection>().StopInspectionExternally();
+        player.GetComponent<MouseMovement>().enabled = state;
+        player.GetComponent<PlayerMovement>().enabled = state;
+        player.GetComponent<ObjectInspection>().enabled = state;
+        pause.SetActive(state);
+        reticle.SetActive(state);
     }
 }

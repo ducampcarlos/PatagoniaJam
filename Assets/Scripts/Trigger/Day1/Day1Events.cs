@@ -10,7 +10,7 @@ public class Day1Events : MonoBehaviour
 
     [SerializeField] List<Collider> drawerColliders = new List<Collider>();
 
-    [SerializeField] GameObject deactivateSoundsTrigger;
+    [SerializeField] GameObject H2Door;
 
     [SerializeField] List<GameObject> sleepingGas = new List<GameObject>();
 
@@ -46,7 +46,7 @@ public class Day1Events : MonoBehaviour
     public void ActivateH2Sound()
     {
         //Activar sonidos de la puerta H2
-        deactivateSoundsTrigger.SetActive(true);
+        H2Door.tag = "Activable";
     }
 
     public void DeactivateH2Sound()

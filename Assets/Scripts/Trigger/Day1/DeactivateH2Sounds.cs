@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeactivateH2Sounds : MonoBehaviour
+public class DeactivateH2Sounds : MonoBehaviour, IActivable
 {
-    private void OnTriggerEnter(Collider other)
+    public void Activate()
     {
         Day1Events.Instance.DeactivateH2Sound();
-        Destroy(gameObject);
+        Destroy(this);
     }
 }
