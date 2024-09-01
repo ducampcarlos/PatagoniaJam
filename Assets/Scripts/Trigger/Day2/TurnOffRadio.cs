@@ -9,5 +9,6 @@ public class TurnOffRadio : MonoBehaviour, IActivable
         //Apagar radio
         Debug.Log("Apagar Radio");
         tag = "Untagged";
+        Day2Events.Instance.StartMannequinSounds();
     }
 }

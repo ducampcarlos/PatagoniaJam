@@ -5637,11 +5637,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2513db106a7b9394fb3e77468a466f5a, type: 3}
+--- !u!1 &194366524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c34c9ffed12449347bbe2362a04ad9b8, type: 3}
+  m_PrefabInstance: {fileID: 1389437168}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &194366525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c34c9ffed12449347bbe2362a04ad9b8, type: 3}
   m_PrefabInstance: {fileID: 1389437168}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &194366528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194366524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b462b3931eb686143b0fc42269d8b80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &195261492 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a5f98b76608ff24bb3b429040ceb666, type: 3}
@@ -12489,6 +12506,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6304715148628434221, guid: 41624cc86f8c2b64e823ef81194fb352, type: 3}
+      propertyPath: m_Name
+      value: Cerradura
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12523,6 +12544,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -434622103309003380, guid: 41624cc86f8c2b64e823ef81194fb352, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558325001}
+    - targetCorrespondingSourceObject: {fileID: -434622103309003380, guid: 41624cc86f8c2b64e823ef81194fb352, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 558325007}
     - targetCorrespondingSourceObject: {fileID: 6304715148628434221, guid: 41624cc86f8c2b64e823ef81194fb352, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2058797227}
@@ -12667,6 +12691,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1660369411494178256, guid: 41624cc86f8c2b64e823ef81194fb352, type: 3}
+--- !u!95 &558325007
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558324996}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e4ad995999771643a6243a7e7ca320a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &586577791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12894,6 +12939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 686020643}
+  - component: {fileID: 686020644}
   m_Layer: 0
   m_Name: RadioTaburete
   m_TagString: Untagged
@@ -12918,6 +12964,18 @@ Transform:
   - {fileID: 194366525}
   m_Father: {fileID: 1182407329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &686020644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686020642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f1803b175b7fe47856b2902ab2ba45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &739349911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16339,7 +16397,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c34c9ffed12449347bbe2362a04ad9b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 194366528}
   m_SourcePrefab: {fileID: 100100000, guid: c34c9ffed12449347bbe2362a04ad9b8, type: 3}
 --- !u!1 &1434463513
 GameObject:
@@ -17490,6 +17551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472716d60394fa14faa58a14d31e4282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mannequinDoor: {fileID: 0}
 --- !u!4 &1819555904
 Transform:
   m_ObjectHideFlags: 0

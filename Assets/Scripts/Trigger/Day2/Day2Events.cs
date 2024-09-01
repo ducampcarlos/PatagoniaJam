@@ -5,6 +5,8 @@ using UnityEngine;
 public class Day2Events : MonoBehaviour
 {
     public static Day2Events Instance;
+    public GameObject mannequinDoor;
+
     private void Awake()
     {
         if (Instance == null)
@@ -15,5 +17,19 @@ public class Day2Events : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void StartMannequinSounds()
+    {
+        //Sonidos de Maniqui
+        mannequinDoor.GetComponent<Animator>().SetTrigger("Open");
+
+        
+    }
+
+    IEnumerator ActivateMannequinCrawl()
+    {
+        yield return new WaitForSeconds(2);
+        //Activar Maniqui
     }
 }
