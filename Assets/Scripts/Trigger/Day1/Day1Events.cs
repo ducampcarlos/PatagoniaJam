@@ -21,6 +21,8 @@ public class Day1Events : MonoBehaviour
     [SerializeField] Volume volume;
     Vignette vignette;
 
+    [SerializeField] Transform day2Position;
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,7 +57,7 @@ public class Day1Events : MonoBehaviour
     IEnumerator StartSleepingGas()
     {
         yield return new WaitForSeconds(2.5f);
-        foreach(var obj in sleepingGas)
+        foreach (var obj in sleepingGas)
         {
             obj.SetActive(true);
         }
@@ -63,19 +65,44 @@ public class Day1Events : MonoBehaviour
 
         ActivatePlayerControl(false);
 
+        StartCoroutine(FadeVignette(true));
+
+        yield return new WaitForSeconds(2);
+
+        foreach (var obj in sleepingGas)
+        {
+            obj.SetActive(false);
+        }
+
+        player.transform.position = day2Position.position;
+        player.transform.rotation = day2Position.rotation;
+
+        StartCoroutine(FadeVignette(false));
+
+        yield return new WaitForSeconds(2);
+
+        ActivatePlayerControl(true);
+    }
+
+    IEnumerator FadeVignette(bool fadein)
+    {
         if (volume.profile.TryGet<Vignette>(out vignette))
         {
             vignette.active = true;
             vignette.intensity.value = 0.1f;
             float currentFadeTime = 0;
             float fadeDuration = 2;
-            while(currentFadeTime < fadeDuration)
+
+            float startValue = fadein ? 0 : 1;
+            float endValue = fadein ? 1 : 0;
+
+            while (currentFadeTime < fadeDuration)
             {
                 // Increase the fade time
                 currentFadeTime += Time.deltaTime;
 
                 // Calculate the current intensity based on the fade time
-                float intensity = Mathf.Lerp(0f, 1, currentFadeTime / fadeDuration);
+                float intensity = Mathf.Lerp(startValue, endValue, currentFadeTime / fadeDuration);
 
                 // Apply the intensity to the vignette effect
                 vignette.intensity.value = intensity;
@@ -83,6 +110,8 @@ public class Day1Events : MonoBehaviour
             }
         }
     }
+
+
 
     void ActivatePlayerControl(bool state)
     {

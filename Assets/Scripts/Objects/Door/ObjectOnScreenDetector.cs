@@ -28,8 +28,10 @@ public class ObjectOnScreenDetector : MonoBehaviour
             if (!visible)
             {
                 executed = true;
-                disappearDoor.SetActive(false);
-                appearWall.SetActive(true);
+                if(disappearDoor != null)
+                    disappearDoor.SetActive(false);
+                if(appearWall != null)
+                    appearWall.SetActive(true);
             }
         }
     }
