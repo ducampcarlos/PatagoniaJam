@@ -98,14 +98,16 @@ public class ObjectInspection : MonoBehaviour
             if (hit.collider.CompareTag("Inspectable"))
             {
                 HandleInspectableObject(hit.collider.gameObject);
+               
             }
             else if (hit.collider.CompareTag("Note"))
             {
                 HandleNoteObject(hit.collider.gameObject);
             }
             else if (hit.collider.CompareTag("Door"))
-            {
+            { 
                 hit.collider.GetComponent<Animator>().SetTrigger("Open");
+                   
             }
             else if (hit.collider.CompareTag("Drawer"))
             {
