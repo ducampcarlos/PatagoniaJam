@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
-       Play("Loop");
+       Play("Loop1");
     }
 
     public void Play(string name)
@@ -35,7 +35,17 @@ public class AudioManager : MonoBehaviour
 
         s.source.Play();
     }
-
+    public IEnumerator PlayClipsSequentially(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        foreach (AudioClip clip in s.clips)
+        {
+            s.source.clip = clip;
+            s.source.Play();
+            // Espera a que el clip termine de reproducirse
+            yield return new WaitForSeconds(clip.length);
+        }
+    }
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);

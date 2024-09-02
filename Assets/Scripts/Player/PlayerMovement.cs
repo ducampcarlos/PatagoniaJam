@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-
+     
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -47,5 +47,11 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        if (move.magnitude > 0 && isGrounded)
+        {
+            // Reproduce el sonido de caminar si el jugador se está moviendo y está en el suelo
+            SoundManager.main.PlayClipsSequentially("Walk");
+        }
     }
 }

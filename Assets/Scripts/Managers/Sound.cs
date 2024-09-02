@@ -7,6 +7,8 @@ public class Sound
 
     public AudioClip clip;
 
+    public AudioClip[] clips;
+
     [Range(0f, 1f)]
     public float volume;
     [Range(.1f, 3)]
@@ -14,9 +16,9 @@ public class Sound
 
     public bool loop;
 
+
     [Header("BGM/SFX/UI")]
     public AudioType type;
 
-    [HideInInspector]
     public AudioSource source;
 }
