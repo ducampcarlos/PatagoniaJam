@@ -6,6 +6,7 @@ public class DeactivateH2Sounds : MonoBehaviour, IActivable
 {
     public void Activate()
     {
+        SoundManager.main.Play("Alarm");
         Day1Events.Instance.DeactivateH2Sound();
         gameObject.tag = "Untagged";
         Destroy(this);

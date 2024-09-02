@@ -6471,6 +6471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b462b3931eb686143b0fc42269d8b80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _source: {fileID: 194366534}
 --- !u!65 &194366531
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6512,8 +6513,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 204
   DopplerLevel: 1
-  MinDistance: 1.2908859
-  MaxDistance: 4.51
+  MinDistance: 1.3704867
+  MaxDistance: 8.47
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -6548,7 +6549,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -13446,9 +13447,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -180395224364241404, guid: dedd4035d61d74647ae2a322ed73a7f8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1860764724}
-    - targetCorrespondingSourceObject: {fileID: -180395224364241404, guid: dedd4035d61d74647ae2a322ed73a7f8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1620564445}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dedd4035d61d74647ae2a322ed73a7f8, type: 3}
       insertIndex: -1
@@ -15443,11 +15441,19 @@ MonoBehaviour:
   - name: OffRadio
     clip: {fileID: 8300000, guid: 2cf3458cf7418dd48acf5313e6d0bed9, type: 3}
     clips: []
-    volume: 0.181
+    volume: 0.595
     pitch: 0
     loop: 0
     type: 14
     source: {fileID: 0}
+  - name: Alarm
+    clip: {fileID: 8300000, guid: 0b49f051805344345a677a7c0df23657, type: 3}
+    clips: []
+    volume: 0.793
+    pitch: 0
+    loop: 1
+    type: 14
+    source: {fileID: 777956479}
 --- !u!1001 &602434031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16063,6 +16069,134 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b24ab107ba6e19468c39ffdadc9476b, type: 3}
   m_PrefabInstance: {fileID: 769322916}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &777956477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777956478}
+  - component: {fileID: 777956479}
+  m_Layer: 0
+  m_Name: AlarmaSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &777956478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777956477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0596, y: -0.01, z: 0.017}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2045260961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &777956479
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777956477}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2.0411477
+  MaxDistance: 6.9329405
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &784804537
 GameObject:
   m_ObjectHideFlags: 0
@@ -22962,12 +23096,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620564444}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0119, y: -0.0078, z: -0.0075}
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0.011660009, y: -0.0006500017, z: 0.0046699895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 473289544}
+  m_Father: {fileID: 1860764724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1620564446
 AudioSource:
@@ -24542,7 +24676,8 @@ Transform:
   m_LocalPosition: {x: 0.00024, y: -0.00845, z: -0.00283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1620564445}
   m_Father: {fileID: 473289544}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!114 &1860764725
@@ -26923,7 +27058,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e02c1f34438d3924d8ea45fba8edaa8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 777956478}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e02c1f34438d3924d8ea45fba8edaa8b, type: 3}
 --- !u!4 &2045260961 stripped
