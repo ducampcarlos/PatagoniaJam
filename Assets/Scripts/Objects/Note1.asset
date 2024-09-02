@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b0e286179e6a94bb917e9ac9b082f3, type: 3}
   m_Name: Note1
   m_EditorClassIdentifier: 
-  bodyText: Content of the first note
+  bodyText: "Bienvenido, agente. Comprendo que es su primera vez en las instalaciones
+    submarinas y, aunque sabemos que tiene los entrenamientos correspondientes del
+    art\xEDculo 24b85, hay ciertos temas confidenciales que va a tener que ir aprendiendo
+    a lo largo de las jornadas laborales. Le dejo la llave del caj\xF3n del escritorio
+    en donde guardamos el manual de convivencia y los primeros pasos a seguir en
+    las instalaciones."
