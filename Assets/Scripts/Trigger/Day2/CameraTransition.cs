@@ -60,7 +60,14 @@ public class CameraTransition : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, fallRotation, elapsedTime / fallDuration);
             transform.position = Vector3.Lerp(transform.position, fallToFloorPosition, elapsedTime / fallDuration);
             elapsedTime += Time.deltaTime;
+
             yield return null;
         }
+        if (elapsedTime >= fallDuration * 0.1f)
+        {
+            SoundManager.main.Play("Knock");
+           
+        }
+
     }
 }

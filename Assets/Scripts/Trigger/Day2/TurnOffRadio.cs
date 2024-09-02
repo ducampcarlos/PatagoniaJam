@@ -13,5 +13,6 @@ public class TurnOffRadio : MonoBehaviour, IActivable
         SoundManager.main.Play("OffRadio");
         tag = "Untagged";
         Day2Events.Instance.StartMannequinSounds();
+        SoundManager.main.Play("Cracking");
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundManager: MonoBehaviour
 {
@@ -40,18 +41,25 @@ public class SoundManager: MonoBehaviour
         s.source.Play();
     }
 
-
-    public IEnumerator PlayClipsSequentially(string name)
+    public void PlayOneShoot(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        foreach (AudioClip clip in s.clips)
-        {
-            s.source.clip = clip;
-            s.source.Play();
-            // Espera a que el clip termine de reproducirse
-            yield return new WaitForSeconds(clip.length);
-        }
+
+        if (s == null)
+            return;
+        s.source.clip = s.clip;
+        s.source.PlayOneShot(s.clip);
     }
+    public void PlayClipsSequentially(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        AudioClip footstepSound = s.clips[Random.Range(0, s.clips.Length)];
+        s.source.clip = footstepSound;
+        s.source.Play();
+ 
+    }
+
+   
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
