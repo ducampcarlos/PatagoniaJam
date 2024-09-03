@@ -46,6 +46,7 @@ public class Day1Events : MonoBehaviour
     public void ActivateH2Sound()
     {
         //Activar sonidos de la puerta H2
+        SoundManager.main.Play("Blows");
         H2Door.tag = "Activable";
     }
 
@@ -80,6 +81,7 @@ public class Day1Events : MonoBehaviour
         StartCoroutine(FadeVignette(false));
 
         yield return new WaitForSeconds(2);
+        SoundManager.main.Stop("Alarm");
 
         ActivatePlayerControl(true);
     }

@@ -9,7 +9,7 @@ public class H2RoomTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Day2Events.Instance.ActivateH2Room();
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }

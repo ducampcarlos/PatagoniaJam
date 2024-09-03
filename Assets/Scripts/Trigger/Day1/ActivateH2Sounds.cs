@@ -11,7 +11,7 @@ public class ActivateH2Sounds : MonoBehaviour
 
     IEnumerator DelayActivation()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         Day1Events.Instance.ActivateH2Sound();
     }
 }

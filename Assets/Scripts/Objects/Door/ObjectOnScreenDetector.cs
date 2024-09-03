@@ -40,4 +40,5 @@ public class ObjectOnScreenDetector : MonoBehaviour
     {
         triggerDoorDisappear = state;
     }
+
 }
