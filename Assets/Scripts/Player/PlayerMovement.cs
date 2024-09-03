@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
 
     bool isGrounded;
+    private float timeSinceLastFootstep;
+    private float minTimeBetweenFootsteps= 0.3f;
+    private float maxTimeBetweenFootsteps= 0.6f;
+    private bool isWalkingSequencePlaying;
 
     // Update is called once per frame
     void Update()
@@ -28,14 +32,14 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-
+     
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         //right is the red Axis, foward is the blue axis
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+         controller.Move(move * speed * Time.deltaTime);
 
         //check if the player is on the ground so he can jump
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -47,5 +51,18 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        if (move != Vector3.zero) // Verifica si el personaje se está moviendo
+        {
+            if (Time.time - timeSinceLastFootstep >= Random.Range(minTimeBetweenFootsteps, maxTimeBetweenFootsteps))
+            {
+                SoundManager.main.PlayClipsSequentially("Walk");
+                timeSinceLastFootstep = Time.time;
+            }
+        }
+
+
     }
+
+
 }

@@ -32,6 +32,7 @@ public class Day2Events : MonoBehaviour
     public void StartMannequinSounds()
     {
         //Sonidos de Maniqui
+
         mannequinDoor.GetComponent<Animator>().SetTrigger("QuickOpen");
 
         StartCoroutine(ActivateMannequinCrawl());
@@ -39,7 +40,7 @@ public class Day2Events : MonoBehaviour
 
     IEnumerator ActivateMannequinCrawl()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.2f);
         foreach(GameObject obj in mannequinTriggers)
         {
             obj.SetActive(true);

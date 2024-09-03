@@ -28,9 +28,10 @@ public class TriggerMannequins : MonoBehaviour
         Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundManager.main.Stop("Cracking");
             skin.SetActive(true);
-            triggerZone.SetActive(false);
             shouldMove = true;
+            triggerZone.SetActive(false);
         }
 
         if (other.gameObject.CompareTag("Deactivable"))

@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CameraTransition : MonoBehaviour
 {
+    public GameObject _panelEnd;
     public Transform targetPoint;    // The point the camera will look at and move towards
     public Transform floorPoint;     // The point used to determine the floor's altitude
     public float moveSpeed = 1f;     // Speed at which the camera moves towards the point
@@ -55,12 +57,29 @@ public class CameraTransition : MonoBehaviour
         Vector3 fallToFloorPosition = new Vector3(transform.position.x, floorPoint.position.y, transform.position.z);
         elapsedTime = 0f;
 
+        StartCoroutine(FadeOutEnd());
         while (elapsedTime < fallDuration)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, fallRotation, elapsedTime / fallDuration);
             transform.position = Vector3.Lerp(transform.position, fallToFloorPosition, elapsedTime / fallDuration);
             elapsedTime += Time.deltaTime;
+
             yield return null;
         }
+
+      
     }
+
+    IEnumerator FadeOutEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SoundManager.main.Play("Knock");
+        yield return new WaitForSeconds(1f);
+        _panelEnd.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Intro");
+
+    }
+
+
 }
