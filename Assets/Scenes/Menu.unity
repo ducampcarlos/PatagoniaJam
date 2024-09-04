@@ -325,7 +325,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.6
+  m_fontSize: 63.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -407,10 +407,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1611763610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 912, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952255614
 MonoBehaviour:
@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 1611763609}
   - component: {fileID: 1611763608}
   - component: {fileID: 1611763607}
+  - component: {fileID: 1611763611}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -758,6 +759,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1611763611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611763606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b142307209e51041bcfb49847b523e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clm: 2
 --- !u!1 &1758738340
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,10 +807,10 @@ RectTransform:
   - {fileID: 366243574}
   m_Father: {fileID: 1611763610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -152.19}
-  m_SizeDelta: {x: 385.0052, y: 72.1885}
+  m_SizeDelta: {x: -622.9948, y: -495.8115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758738342
 MonoBehaviour:
@@ -904,6 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bcff569018809459175d965aab4669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: Intro
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
