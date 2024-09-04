@@ -13,8 +13,6 @@ public class ObjectInspection : MonoBehaviour
     public GameObject noteUI;  // Reference to the GameObject containing the background and text
     public TextMeshProUGUI noteTextDisplay;  // Reference to the UI text element for displaying note contents
     public Image reticleImage;  // Reference to the reticle image
-    public Color defaultReticleColor = Color.white;
-    public Color interactableReticleColor = Color.yellow;
 
     private bool isInspecting = false;
     private GameObject currentInspectableObject;
@@ -30,12 +28,6 @@ public class ObjectInspection : MonoBehaviour
         if (noteUI != null)
         {
             noteUI.SetActive(false);
-        }
-
-        // Set the reticle to its default color
-        if (reticleImage != null)
-        {
-            reticleImage.color = defaultReticleColor;
         }
     }
 
@@ -71,22 +63,33 @@ public class ObjectInspection : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 2f, inspectableLayer))
         {
-            if (hit.collider.CompareTag("Inspectable") ||
-                hit.collider.CompareTag("Note") ||
+            if (hit.collider.CompareTag("Inspectable"))
+            {
+                reticleImage.GetComponent<Animator>().SetBool("Idle", false);
+                reticleImage.GetComponent<Animator>().SetBool("Hand", false);
+                reticleImage.GetComponent<Animator>().SetBool("Eye", true);
+            }
+            else if (hit.collider.CompareTag("Note") ||
                 hit.collider.CompareTag("Door") ||
                 hit.collider.CompareTag("Drawer") ||
                 hit.collider.CompareTag("Activable"))
             {
-                reticleImage.color = interactableReticleColor;
+                reticleImage.GetComponent<Animator>().SetBool("Idle", false);
+                reticleImage.GetComponent<Animator>().SetBool("Hand", true);
+                reticleImage.GetComponent<Animator>().SetBool("Eye", false);
             }
             else
             {
-                reticleImage.color = defaultReticleColor;
+                reticleImage.GetComponent<Animator>().SetBool("Idle", true);
+                reticleImage.GetComponent<Animator>().SetBool("Hand", false);
+                reticleImage.GetComponent<Animator>().SetBool("Eye", false);
             }
         }
         else
         {
-            reticleImage.color = defaultReticleColor;
+            reticleImage.GetComponent<Animator>().SetBool("Idle", true);
+            reticleImage.GetComponent<Animator>().SetBool("Hand", false);
+            reticleImage.GetComponent<Animator>().SetBool("Eye", false);
         }
     }
 

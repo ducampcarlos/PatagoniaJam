@@ -77,7 +77,7 @@ public class CameraTransition : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _panelEnd.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Intro");
+        SceneManager.LoadScene("Credits");
 
     }
 
