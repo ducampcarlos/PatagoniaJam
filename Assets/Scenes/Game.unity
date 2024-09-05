@@ -8388,7 +8388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509852641510445763, guid: e44746fbc19aab74d8e7d8b7624d51b2, type: 3}
       propertyPath: speed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1701830565408138168, guid: e44746fbc19aab74d8e7d8b7624d51b2, type: 3}
       propertyPath: noteUI
@@ -18903,7 +18903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &981724072
 Transform:
   m_ObjectHideFlags: 0
@@ -18938,8 +18938,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.2602395, z: 1.1183317}
-  m_Center: {x: 0, y: -0.13011938, z: 0.05916576}
+  m_Size: {x: 1, y: 1.2602395, z: 1.1585246}
+  m_Center: {x: 0, y: -0.13011938, z: 0.079262145}
 --- !u!23 &981724074
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27188,7 +27188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cg: {fileID: 1870692127}
-  waitTime: 20
+  waitTime: 5
   FadeTime: 2
 --- !u!1001 &1880892692
 PrefabInstance:
